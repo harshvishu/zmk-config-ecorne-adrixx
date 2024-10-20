@@ -37,9 +37,17 @@
             ;
     };
 
+    ext-power {
+        compatible = "zmk,ext-power-generic";
+        label = "EXT_POWER";
+        control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+         init-delay-ms = <50>;
+    };
+
      vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
     };
+
 };
 
 
@@ -96,13 +104,4 @@
         cdi = <0xd2>;   // SDA - D2 
         tcon = <0x22>;
     };
-};
-&spi3 {
-    compatible = "nordic,nrf-spim";
-    status = "okay";
-
-    pinctrl-0 = <&spi3_default>;
-    pinctrl-1 = <&spi3_sleep>;
-    pinctrl-names = "default", "sleep";
-
 };
